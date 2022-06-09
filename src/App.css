@@ -1,0 +1,37 @@
+.app-react {
+  width: 100%;
+  background-color: cadetblue;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.persons-table {
+  width: 600px;
+  height: 700px;
+  background-color: bisque;
+
+}
+
+.person {
+  display: flex;
+  flex-direction: row;
+}
+
+.person>span,
+.person>i {}
+
+.person>i {
+  padding: 20px 20px;
+}
+
+.id {
+  width: 50px;
+}
+
+.name,
+.id {
+  padding: 20px 20px;
+  width: 50px;
+}
