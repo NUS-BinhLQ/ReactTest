@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './Button.css'
+import { useDispatch, useSelector } from 'react-redux';
 const URL = "http://localhost:3000/api/v1/persons";
 
-function Person({ person, persons, index, getPersons }) {
+function Person({ person, index, getPersons }) {
+
+    const persons = useSelector((state) => state.personReducer.persons);
 
     const [isEdit, setEdit] = useState(true);
     const [name, setName] = useState(person.name);
@@ -52,7 +55,7 @@ function Person({ person, persons, index, getPersons }) {
             <div class="id"><span>{index}</span></div>
             <div class="name">
                 {isEdit && <span >{person.name}</span>}
-                {!isEdit && <input value={name} onChange={handleSetName} />}
+                {!isEdit && <input value={person.name} onChange={handleSetName} />}
             </div>
 
 

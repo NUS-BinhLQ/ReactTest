@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import './AddForm.css'
 import axios from 'axios';
-function AddForm({ url, isSubmited }) {
+import { URL } from '../config/Path';
+function AddForm({ isSubmited }) {
     const [name, setName] = useState('');
     async function handleSubmit(event) {
         event.preventDefault();
 
         if (name !== '') {
-            await axios.post(url, { name: name })
+            await axios.post(URL, { name: name })
                 .then((res) => {
                     isSubmited();
                     setName('');
