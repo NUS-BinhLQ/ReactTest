@@ -1,0 +1,39 @@
+.button {
+    margin: 0 4px;
+    justify-content: center;
+    display: flex;
+    width: 46px;
+    height: 46px;
+}
+
+
+.button>i {
+    padding: var(--p-btn);
+    cursor: pointer;
+}
+
+.edit:hover {
+    color: var(--c-primary);
+}
+
+.delete:hover {
+    color: var(--c-danger);
+}
+
+.arrow:hover {
+    color: var(--c-arrow);
+}
+
+.bottom {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 60px;
+}
+
+.add {
+    font-size: 40px;
+    color: var(--c-primary);
+
+    border-radius: 100%;
+}

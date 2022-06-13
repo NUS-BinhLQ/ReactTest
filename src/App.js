@@ -1,50 +1,55 @@
-import logo from './logo.svg';
 import React, { useEffect, useState } from 'react';
 import './App.css';
 
-function Person({ name, index }) {
-
-  return (
-    <div className='person'>
-      <div class="id"><span>{index}</span></div>
-      <div class="name">
-        <span >{name}</span>
-      </div>
-
-      <i class="far fa-edit"></i>
-      <i class="fas fa-angle-up"></i>
-      <i class="fas fa-angle-down"></i>
-      <i class="far fa-trash-alt"></i>
-    </div>
-  );
-}
-
-
+import AddForm from './AddForm.js';
+import Person from './Person.js'
+import axios from 'axios';
+const URL = "http://localhost:3000/api/v1/persons";
 function App() {
-  const URL = "http://localhost:3000/api/v1/persons";
   const [persons, setPersons] = useState([]);
-  function getPersons() {
-    fetch(URL)
-      .then(res => res.json())
-      .then(result => setPersons(result.data.persons))
+  function add() {
+    document.querySelector('.form-popup').style.display = 'block';
+  }
+  async function getPersons() {
+    await axios.get(URL)
+      .then((result) => {
+        setPersons(result.data.data.persons);
+
+      })
       .catch(err => {
         console.log(err);
       });
+
   }
-
   useEffect(() => {
-    getPersons(URL);
+    getPersons()
   }, []);
-
 
   return (
     <div className='app-react'>
-      <div className='persons-table'>
-        {
-          persons.map((person, index) => (<Person name={person.name} index={person.id} />))
-        }
+      <div className='table'>
+        <div className='persons-table'>
+          <div class="fields">
+            <span>STT</span>
+            <span>Họ tên</span>
+
+          </div>
+          <div className='list'>
+            {
+              persons && persons.map((person, index) => (<Person key={index} persons={persons} person={person} index={index + 1} getPersons={getPersons} />))
+            }
+          </div>
+          <div className='bottom'>
+            <div className="button">
+              <i className="fas fa-plus-circle add" onClick={add}></i>
+            </div>
+
+          </div>
+        </div>
+        <AddForm url={URL} isSubmited={getPersons} />
       </div>
-    </div>
+
+    </div >
   );
 }
 

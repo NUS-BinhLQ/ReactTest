@@ -1,37 +1,82 @@
+:root {
+  --p-btn: 14px;
+  --c-danger: rgb(212, 73, 73);
+  --c-primary: rgb(66, 172, 106);
+  --c-arrow: rgb(51, 148, 187);
+}
+
 .app-react {
   width: 100%;
-  background-color: cadetblue;
+  background-color: rgb(241, 241, 241);
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.persons-table {
-  width: 600px;
+.table {
   height: 700px;
-  background-color: bisque;
+}
 
+.persons-table {
+  width: 550px;
+  height: 100%;
+  padding: 14px;
+  background-color: rgb(248, 248, 248);
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 3;
+}
+
+.list {
+  flex-grow: 3;
+  overflow: auto;
+  padding: 4px 4px;
 }
 
 .person {
   display: flex;
   flex-direction: row;
+  border-radius: 8px;
+
 }
 
-.person>span,
-.person>i {}
+.fields {
+  display: flex;
+  border-bottom: 1px solid #aaa;
+}
 
-.person>i {
-  padding: 20px 20px;
+.person:hover {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.name {
+  flex-grow: 1;
+  padding: var(--p-btn);
+}
+
+.name>input {
+  border: none;
+  font-size: 16px;
+  padding: 0;
+  background-color: rgba(170, 170, 170, 0);
+}
+
+.name>input:focus {
+  outline: none;
+}
+
+.name>span {
+  font-size: 16px;
 }
 
 .id {
-  width: 50px;
+  width: 40px;
 }
 
-.name,
-.id {
-  padding: 20px 20px;
-  width: 50px;
+.id,
+.fields>span {
+  padding: 14px;
+
 }
